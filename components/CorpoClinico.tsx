@@ -349,12 +349,12 @@ const profissionais: Prof[] = [
   {
     nome: 'Mara Serafim',
     registro: 'CRP 12/22673',
-    metodo: 'TCC',
+    metodo: 'Terapia Cognitivo Comportamental (TCC)',
     filtros: ['TCC'],
-    formacao: 'UNISUL; Pós em Marketing (UFSC); Hipnoterapia (AC Hipnose).',
-    publico: 'Adolescentes (13+), Adultos, Idosos, Casais e Grupos. Presencial e online.',
-    demandas: 'Cuidados paliativos, insegurança, dependência emocional, luto e perdas.',
-    atendimento: 'Unimed, Saudesc, CELOS, EloSaúde, ABEPOM, CASACARESC, Sim Saúde, GEAP, FUSEX, Petrobras, Saúde Caixa e Particular.',
+    formacao: 'Pós-Graduanda em Terapia Cognitivo-Comportamental (ICTC); Graduada em Psicologia (UNISUL); Pós-Graduada em Marketing para Gestão Empresarial (UFSC); Graduada em Automação de Empresas (UNIVALI); Curso de Cuidados Paliativos (UNISUL); Curso de Hipnoterapia (Associação Catarinense de Hipnose).',
+    publico: 'Atende Crianças a partir de 13 anos, Adolescentes, Adultos, Idosos, Casais e Grupos. Atendimento Presencial e Online.',
+    demandas: 'Ansiedade, depressão, tristezas, luto e perdas, fobias, traumas e abusos, cuidados paliativos, ideações suicidas, estresse e esgotamento profissional, problemas familiares e conjugais, separação conjugal, dependência emocional, autoconhecimento e autoestima, insegurança, dependências emocionais, orientação profissional.',
+    atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), Saudesc, CELOS, Elosaúde, ABEPOM, CASACARESC, Sim Saúde, GEAP, FUSEX, Petrobras, Saúde Caixa e Particular.',
     foto: '/equipe/mara_psico.avif',
   },
   {
