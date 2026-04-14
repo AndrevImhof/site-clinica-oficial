@@ -44,7 +44,7 @@ export default function AvaliacaoNeuropsico() {
       <div className="container-max">
 
         {/* ── Badge ── */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-5 md:mb-8">
           <span className="inline-flex items-center gap-2 bg-white/15 border border-white/25
                            rounded-full px-4 py-1.5 text-white text-xs font-semibold tracking-wide">
             <span className="w-2 h-2 rounded-full bg-[#FCECBF] animate-pulse" />
@@ -64,12 +64,14 @@ export default function AvaliacaoNeuropsico() {
           </p>
         </div>
 
-        {/* ── 1. O que avaliamos — Cards ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* ── 1. O que avaliamos — Mobile: scroll | md+: grid ── */}
+        <div className="snap-cards flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4
+                        md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:snap-none md:pb-0 md:mx-0 md:px-0">
           {cards.map((card) => (
             <div
               key={card.titulo}
-              className="bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-lg shadow-black/20"
+              className="bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-lg shadow-black/20
+                         flex-shrink-0 snap-start w-[82vw] min-w-[270px] md:w-auto md:min-w-0"
             >
               <div className="w-10 h-10 rounded-xl bg-[#F4E6E9] flex items-center justify-center flex-shrink-0">
                 <Brain className="w-5 h-5 text-[#7C2C3B]" />

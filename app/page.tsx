@@ -38,12 +38,12 @@ export default function Home() {
       <main>
         <Hero />
         <Diferenciais />
-        <Sobre />
-        <AvaliacaoNeuropsico />
-        <Abordagens />
         <CorpoClinico />
-        <Depoimentos />
+        <Abordagens />
+        <AvaliacaoNeuropsico />
         <Convenios />
+        <Sobre />
+        <Depoimentos />
       </main>
       <Footer />
       <WhatsAppFab />

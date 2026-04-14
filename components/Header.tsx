@@ -5,12 +5,12 @@ import { Menu, X, MessageCircle } from 'lucide-react'
 import Image from 'next/image'
 
 const navLinks = [
-  { label: 'Início',       href: '#inicio'          },
-  { label: 'Sobre',        href: '#sobre'            },
+  { label: 'Início',       href: '#inicio'           },
+  { label: 'Equipe',       href: '#equipe'           },
   { label: 'Abordagens',   href: '#abordagens'       },
   { label: 'Testes Neuro', href: '#neuropsicologia', novo: true },
-  { label: 'Equipe',       href: '#equipe'           },
   { label: 'Convênios',    href: '#convenios'        },
+  { label: 'Sobre',        href: '#sobre'            },
   { label: 'Contato',      href: '#contato'          },
 ]
 
@@ -57,7 +57,7 @@ export default function Header() {
               priority
             />
           </div>
-          <div className="hidden sm:block">
+          <div className="block">
             <p className="font-serif font-bold text-[#7C2C3B] text-sm leading-tight">
               Clínica Luciano Noceti
             </p>
@@ -90,15 +90,16 @@ export default function Header() {
 
         {/* CTA + Mobile toggle */}
         <div className="flex items-center gap-3">
+          {/* Mobile: só ícone redondo | Desktop: botão completo */}
           <a
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-whatsapp text-xs sm:text-sm px-4 sm:px-6"
+            className="btn-whatsapp p-2 rounded-full sm:px-6 sm:rounded-full sm:gap-2"
+            aria-label="Agendar pelo WhatsApp"
           >
-            <MessageCircle className="w-4 h-4" />
-            <span className="hidden sm:inline">Agendamento Rápido</span>
-            <span className="sm:hidden">Agendar</span>
+            <MessageCircle className="w-5 h-5 flex-shrink-0" />
+            <span className="hidden sm:inline text-sm">Agendamento Rápido</span>
           </a>
 
           <button
@@ -114,10 +115,10 @@ export default function Header() {
       {/* Mobile Menu */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ${
-          menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          menuOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <nav className="bg-white border-t border-neutral-100 px-4 pb-4 pt-2 flex flex-col gap-1">
+        <nav className="bg-white border-t border-neutral-100 px-4 pt-2 pb-24 flex flex-col gap-1">
           {navLinks.map((link) => (
             <a
               key={link.href}

@@ -619,6 +619,7 @@ export default function CorpoClinico() {
   const [filtro, setFiltro] = useState('Todos')
   const [busca, setBusca] = useState('')
   const [aberto, setAberto] = useState<Prof | null>(null)
+  const [expandido, setExpandido] = useState(false)
   const fechar = useCallback(() => setAberto(null), [])
 
   const filtros = useMemo(() => {
@@ -639,6 +640,11 @@ export default function CorpoClinico() {
     })
   }, [filtro, busca])
 
+  // Quando não há filtro/busca ativos, limita a 6 por padrão no mobile
+  const semFiltroAtivo = filtro === 'Todos' && busca === ''
+  const exibidos = semFiltroAtivo && !expandido ? visíveis.slice(0, 6) : visíveis
+  const mostrarBotaoExpandir = semFiltroAtivo && visíveis.length > 6
+
   return (
     <section id="equipe" className="section-padding bg-slate-50">
       <div className="container-max">
@@ -650,7 +656,7 @@ export default function CorpoClinico() {
           </span>
           <h2 className="heading-primary text-3xl sm:text-4xl">Nosso Corpo Clínico</h2>
           <div className="mt-3 w-16 h-1 rounded-full bg-[#7C2C3B] mx-auto" />
-          <p className="mt-5 text-body text-base max-w-xl mx-auto">
+          <p className="mt-5 text-body text-sm md:text-base max-w-xl mx-auto">
             {profissionais.length} profissionais qualificados e comprometidos com a sua saúde mental.
             Clique em qualquer card para ver o perfil completo.
           </p>
@@ -702,11 +708,32 @@ export default function CorpoClinico() {
 
         {/* Grid */}
         {visíveis.length > 0 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {visíveis.map(p => (
-              <Card key={p.registro + p.nome} p={p} onOpen={() => setAberto(p)} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              {exibidos.map(p => (
+                <Card key={p.registro + p.nome} p={p} onOpen={() => setAberto(p)} />
+              ))}
+            </div>
+
+            {/* Botão expandir — só aparece quando não há filtro/busca ativos */}
+            {mostrarBotaoExpandir && (
+              <div className="flex justify-center mt-8">
+                <button
+                  onClick={() => setExpandido(!expandido)}
+                  className="inline-flex items-center gap-2 px-8 py-3 rounded-full
+                             border-2 border-[#7C2C3B]/40 text-[#7C2C3B] text-sm font-semibold
+                             hover:border-[#7C2C3B] hover:bg-[#FBF0F1]
+                             transition-all duration-200"
+                >
+                  {expandido
+                    ? 'Ver menos'
+                    : `Ver todos os ${visíveis.length} profissionais`}
+                  <ChevronRight className={`w-4 h-4 transition-transform duration-200
+                                            ${expandido ? 'rotate-90' : ''}`} />
+                </button>
+              </div>
+            )}
+          </>
         ) : (
           <div className="text-center py-16 text-neutral-400">
             <p className="text-sm">Nenhum profissional encontrado.</p>

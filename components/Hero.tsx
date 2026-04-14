@@ -32,7 +32,7 @@ export default function Hero() {
             </div>
 
             {/* Headline */}
-            <h1 className="heading-serif text-4xl sm:text-5xl xl:text-6xl text-neutral-800 leading-[1.1]">
+            <h1 className="heading-serif text-3xl sm:text-5xl xl:text-6xl text-neutral-800 leading-[1.1]">
               Excelência no cuidado com a{' '}
               <br className="hidden sm:block" />
               <span className="text-[#7C2C3B]">saúde mental</span>

@@ -78,11 +78,11 @@ export default function Depoimentos() {
       <div className="container-max">
 
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-8 md:mb-14">
           <span className="inline-block text-[#7C2C3B] text-xs font-semibold tracking-[0.2em] uppercase mb-3">
             Avaliações
           </span>
-          <h2 className="heading-primary text-3xl sm:text-4xl">
+          <h2 className="heading-primary text-2xl sm:text-4xl">
             O que dizem nossos pacientes
           </h2>
           <div className="mt-3 w-16 h-1 rounded-full bg-[#7C2C3B] mx-auto" />
@@ -103,10 +103,15 @@ export default function Depoimentos() {
             Remova o grid de cards manuais abaixo quando ativar o widget.
         ───────────────────────────────────────────────────────────────── */}
 
-        {/* Cards manuais */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Cards manuais | Mobile: scroll horizontal | md+: grid */}
+        <div className="snap-cards flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4
+                        md:grid md:grid-cols-2 md:overflow-visible md:snap-none md:pb-0 md:mx-0 md:px-0
+                        lg:grid-cols-3 md:gap-6">
           {depoimentos.map((d) => (
-            <article key={d.autor + d.texto.slice(0, 20)} className="card p-7 flex flex-col gap-4">
+            <article key={d.autor + d.texto.slice(0, 20)}
+              className="card p-6 flex flex-col gap-4
+                         flex-shrink-0 snap-start w-[82vw] min-w-[280px]
+                         md:w-auto md:min-w-0">
               {/* Top: stars + quote icon */}
               <div className="flex items-center justify-between">
                 <Stars nota={d.nota} />

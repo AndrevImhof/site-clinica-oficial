@@ -49,13 +49,13 @@ export default function Convenios() {
           </p>
         </div>
 
-        {/* Grid de logos */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+        {/* Grid de logos — 3 col no mobile, 4 col no lg */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4 mb-8">
           {convenios.map(({ nome, logo, scale, alt }) => (
             <div
               key={nome}
               className="flex items-center justify-center bg-white border border-[#7C2C3B]/15
-                         rounded-xl p-5 overflow-hidden
+                         rounded-xl p-2 sm:p-5 overflow-hidden
                          hover:border-[#7C2C3B]/35 hover:-translate-y-0.5
                          transition-all duration-300"
               style={{ boxShadow: '0 1px 6px rgba(124,44,59,0.07), 0 4px 14px rgba(124,44,59,0.05)' }}
@@ -63,7 +63,7 @@ export default function Convenios() {
               <img
                 src={logo}
                 alt={alt ?? nome}
-                className={`object-contain h-16 w-auto mx-auto transition-transform ${scale ?? ''}`}
+                className={`object-contain h-8 sm:h-14 w-auto mx-auto transition-transform ${scale ?? ''}`}
               />
             </div>
           ))}

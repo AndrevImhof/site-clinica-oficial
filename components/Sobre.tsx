@@ -21,7 +21,7 @@ export default function Sobre() {
       <div className="container-max">
 
         {/* Section label */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-8 md:mb-14">
           <span className="inline-block text-[#7C2C3B] text-xs font-semibold tracking-[0.2em] uppercase mb-3">
             Nossa história
           </span>
@@ -74,7 +74,7 @@ export default function Sobre() {
               uma ampla gama de abordagens terapêuticas, garantindo que cada paciente
               encontre o suporte ideal para a sua jornada de autoconhecimento e desenvolvimento emocional.
             </p>
-            <p className="text-body text-base leading-8">
+            <p className="hidden md:block text-body text-base leading-8">
               Fundada pelo psicanalista <strong className="text-neutral-800">Luciano Noceti e Vieira</strong>,
               graduado em Psicologia pela UFSC e com formação em Psicanálise pela Instituição
               Psicanalítica Maiêutica Florianópolis, a clínica nasceu do compromisso com

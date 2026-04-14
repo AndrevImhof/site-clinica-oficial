@@ -93,11 +93,11 @@ export default function Abordagens() {
       <div className="container-max">
 
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-8 md:mb-14">
           <span className="inline-block text-[#7C2C3B] text-xs font-semibold tracking-[0.2em] uppercase mb-3">
             Especialidades
           </span>
-          <h2 className="heading-primary text-3xl sm:text-4xl">
+          <h2 className="heading-primary text-2xl sm:text-4xl">
             Nossas Abordagens Terapêuticas
           </h2>
           <div className="mt-3 w-16 h-1 rounded-full bg-[#7C2C3B] mx-auto" />
@@ -107,12 +107,16 @@ export default function Abordagens() {
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Mobile: scroll horizontal com snap | sm+: grid */}
+        <div className="snap-cards flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4
+                        sm:grid sm:grid-cols-2 sm:overflow-visible sm:snap-none sm:pb-0 sm:mx-0 sm:px-0
+                        lg:grid-cols-3 sm:gap-5">
           {abordagens.map(({ icon: Icon, name, sub, desc, color, bg, border }) => (
             <article
               key={name}
-              className={`card p-7 border ${border} group cursor-default`}
+              className={`card p-6 border ${border} group cursor-default
+                          flex-shrink-0 snap-start w-[82vw] min-w-[260px]
+                          sm:w-auto sm:min-w-0`}
             >
               <div className="flex items-start gap-4">
                 <div className={`flex-shrink-0 w-11 h-11 rounded-xl ${bg}
