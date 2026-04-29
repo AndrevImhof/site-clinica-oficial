@@ -1,4 +1,39 @@
-import { Brain, MessageCircle, User, Clock, FileText, Award } from 'lucide-react'
+'use client'
+
+import { useState } from 'react'
+import Image from 'next/image'
+import { Brain, MessageCircle, User, Clock, FileText, Award, X, Monitor, MapPin } from 'lucide-react'
+
+interface Psicologa {
+  nome: string
+  registro: string
+  metodo: string
+  formacao: string
+  publico: string
+  demandas: string
+  foto: string
+}
+
+const psicologas: Psicologa[] = [
+  {
+    nome: 'Catarina Geoffroy',
+    registro: 'CRP 12/21876',
+    metodo: 'Terapia Cognitivo Comportamental (TCC), Neuropsicologia e ABA',
+    formacao: 'Psicóloga formada pela UFF/RJ em 2004. Pós-graduação em Autismo, ABA, TCC e Neuropsicologia (IPOG). Atuou como psicóloga clínica na abordagem TCC e fez parte da equipe multidisciplinar do Centro de Referência Municipal em Autismo Prof. Maria José da Silva Rodrigues (São Gonçalo, RJ). Em 2021 mudou-se para Florianópolis/SC.',
+    publico: 'Atendimento presencial infantil, juvenil e adulto. Atendimento remoto a partir de 15 anos. Orientação parental e avaliação neuropsicológica.',
+    demandas: 'TEA, TDAH, TOD, ansiedade, depressão, dificuldades e transtornos socioemocionais, transtornos alimentares, luto, fobias, estresse pós-traumático, gênero e sexualidade, conflitos familiares e de relacionamentos.',
+    foto: '/equipe/catarina_neuro.jpeg',
+  },
+  {
+    nome: 'Anna de Lima Estanislau',
+    registro: 'CRP 12/13484',
+    metodo: 'Terapia Cognitivo-Comportamental (TCC) e Neuropsicologia',
+    formacao: 'Psicóloga formada desde 2014 pelo Centro Universitário CESUSC (Florianópolis/SC). Pós-graduação em Terapia Cognitivo-Comportamental pelo Instituto Cognitio (2020) e em Neuropsicologia pela UNIASSELVI (2024). Experiência em atendimento clínico infantil, incluindo equoterapia, com foco em crianças com diferentes condições neurológicas e do neurodesenvolvimento.',
+    publico: 'Atendimento clínico infantil, juvenil e adulto. Modalidades online e presencial.',
+    demandas: 'Avaliação neuropsicológica com foco em TEA, TDAH e outras condições do neurodesenvolvimento. Identificação de déficits em funções cognitivas e executivas, com orientação para intervenções terapêuticas e encaminhamentos.',
+    foto: '/equipe/annaestanislau_psico.avif',
+  },
+]
 
 const WA_LINK = 'https://wa.me/5548998056893'
 
@@ -39,6 +74,7 @@ const detalhes = [
 ]
 
 export default function AvaliacaoNeuropsico() {
+  const [modalAberto, setModalAberto] = useState<Psicologa | null>(null)
   return (
     <section id="neuropsicologia" className="w-full bg-[#7C2C3B] section-padding">
       <div className="container-max">
@@ -63,7 +99,52 @@ export default function AvaliacaoNeuropsico() {
             e direcionamento terapêutico assertivo.
           </p>
         </div>
+        {/* — Psicólogas que realizam — */}
+        <div className="mb-12 md:mb-16">
+          <div className="text-center mb-8">
+            <h3 className="heading-serif text-2xl md:text-3xl text-white mb-2">
+              Quem realiza
+            </h3>
+            <p className="text-white/70 text-sm md:text-base">
+              Psicólogas especializadas em Avaliação Neuropsicológica
+            </p>
+          </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {psicologas.map((psi) => (
+              <button
+                key={psi.nome}
+                onClick={() => setModalAberto(psi)}
+                className="group bg-white rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 text-left hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
+              >
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-[#FCECBF]/40">
+                  <Image
+                    src={psi.foto}
+                    alt={psi.nome}
+                    width={160}
+                    height={160}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <h4 className="heading-serif text-xl md:text-2xl text-[#7C2C3B] mb-1">
+                    {psi.nome}
+                  </h4>
+                  <p className="text-[#7C2C3B]/70 text-sm font-semibold mb-3">
+                    {psi.registro}
+                  </p>
+                  <p className="text-neutral-700 text-sm leading-relaxed mb-4">
+                    {psi.metodo}
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-[#7C2C3B] text-sm font-semibold group-hover:gap-3 transition-all">
+                    Ver perfil completo
+                    <span aria-hidden>→</span>
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
         {/* ── 1. O que avaliamos — Mobile: scroll | md+: grid ── */}
         <div className="snap-cards flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4
                         md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:snap-none md:pb-0 md:mx-0 md:px-0">
@@ -148,6 +229,83 @@ export default function AvaliacaoNeuropsico() {
         </div>
 
       </div>
+    {/* — Modal de detalhes da psicóloga — */}
+      {modalAberto && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+          onClick={() => setModalAberto(null)}
+        >
+          <div
+            className="relative bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setModalAberto(null)}
+              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-colors z-10"
+              aria-label="Fechar"
+            >
+              <X className="w-5 h-5 text-neutral-700" />
+            </button>
+
+            <div className="p-6 md:p-10">
+              <div className="flex flex-col md:flex-row items-center gap-6 mb-8 pb-8 border-b border-neutral-200">
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-[#FCECBF]/60">
+                  <Image
+                    src={modalAberto.foto}
+                    alt={modalAberto.nome}
+                    width={160}
+                    height={160}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="text-center md:text-left">
+                  <h3 className="heading-serif text-2xl md:text-3xl text-[#7C2C3B] mb-1">
+                    {modalAberto.nome}
+                  </h3>
+                  <p className="text-[#7C2C3B]/70 text-sm font-semibold mb-3">
+                    {modalAberto.registro}
+                  </p>
+                  <p className="text-neutral-700 text-sm leading-relaxed">
+                    {modalAberto.metodo}
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-[#7C2C3B] font-bold text-xs uppercase tracking-widest mb-2 flex items-center gap-2">
+                    <Award className="w-4 h-4" />
+                    Formação
+                  </h4>
+                  <p className="text-neutral-700 text-sm leading-relaxed">
+                    {modalAberto.formacao}
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-[#7C2C3B] font-bold text-xs uppercase tracking-widest mb-2 flex items-center gap-2">
+                    <User className="w-4 h-4" />
+                    Público atendido
+                  </h4>
+                  <p className="text-neutral-700 text-sm leading-relaxed">
+                    {modalAberto.publico}
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-[#7C2C3B] font-bold text-xs uppercase tracking-widest mb-2 flex items-center gap-2">
+                    <Brain className="w-4 h-4" />
+                    Demandas atendidas
+                  </h4>
+                  <p className="text-neutral-700 text-sm leading-relaxed">
+                    {modalAberto.demandas}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
