@@ -35,7 +35,7 @@ const psicologas: Psicologa[] = [
   },
 ]
 
-const WA_LINK = 'https://wa.me/5548998056893'
+const WA_NEURO_LINK = 'https://wa.me/5548991908715?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20Avalia%C3%A7%C3%A3o%20Neuropsicol%C3%B3gica.'
 
 const cards = [
   {
@@ -216,7 +216,7 @@ export default function AvaliacaoNeuropsico() {
         {/* ── CTA ── */}
         <div className="flex justify-center mt-10">
           <a
-            href={WA_LINK}
+            href={WA_NEURO_LINK}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 bg-white text-[#7C2C3B]
