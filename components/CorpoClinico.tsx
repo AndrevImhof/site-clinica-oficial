@@ -358,6 +358,17 @@ const profissionais: Prof[] = [
     foto: '/equipe/morgana_psico.avif',
   },
   {
+    nome: 'Nicolas Carione de Pellegrin',
+    registro: 'CRP 12/30597',
+    metodo: 'Escuta orientada através da Psicanálise',
+    filtros: ['Psicanálise'],
+    formacao: 'Graduação em Psicologia pela Universidade do Vale do Itajaí (UNIVALI). Formação em andamento pelo Centro de Estudos de Terapias e Psicanálise (CETEP).',
+    publico: 'Atende adolescentes a partir de 15 anos, adultos e idosos. Atendimento Presencial e On-line.',
+    demandas: 'Transtornos de ansiedade, angústia, depressão, dificuldades nos relacionamentos, conflitos familiares, autoestima, insegurança, ciúmes, dependência emocional, separações e términos de relacionamento, luto e perdas, estresse, sensação de vazio, insatisfação com a vida, autoconhecimento, amadurecimento emocional, repetição de padrões nos vínculos e dificuldades na construção e manutenção de relações. Abuso sexual, vítimas de traumas e preconceitos, transtornos alimentares (anorexia, bulimia, TARE) e transtornos de imagem.',
+    atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), Saudesc, CELOS, Elosaúde, ABEPOM, CASACARESC, SC Saúde, Sim Saúde, GEAP, FUSEX, Petrobras, Saúde Caixa e Particular.',
+    foto: '/equipe/nicolas_psico.jpeg',
+  },
+  {
     nome: 'Patricia N. de A. Nogueira',
     registro: 'CRP 12/28637',
     metodo: 'Psicologia Analítica',
