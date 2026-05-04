@@ -402,6 +402,17 @@ const profissionais: Prof[] = [
     foto: '/equipe/sergio_psico.avif',
   },
   {
+    nome: 'Rafaela Vestri',
+    registro: 'CRP 12/28700',
+    metodo: 'Psicanálise de Orientação Lacaniana',
+    filtros: ['Psicanálise'],
+    formacao: 'Graduação em Psicologia pela Universidade Fernando Pessoa (Portugal) e pela UniCesusc (Florianópolis). Em formação contínua pelo Instituto Clínico de Psicanálise de Orientação Lacaniana da Escola Brasileira de Psicanálise.',
+    publico: 'Atende Crianças a partir de 03 anos, Adolescente, Adulto e Idoso. Atendimento On-line e Presencial.',
+    demandas: 'Ansiedade; comunicação e expressão; compulsões; dependência química; depressão e estados depressivos; dor emocional; estresse e estresse pós-traumático; fobias (incluindo fobia social); ideação suicida; luto e perdas; medos; questões relacionadas à sexualidade e gênero; síndrome do pânico; transições de vida; transtorno bipolar; transtorno obsessivo-compulsivo (TOC); transtornos alimentares (como bulimia e anorexia); transtornos de humor; transtornos do sono; vivências traumáticas; violências (incluindo violência sexual) e situações de preconceito. E outras questões que possam emergir na singularidade de cada sujeito.',
+    atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), Saudesc, CELOS, Elosaúde, ABEPOM, CASACARESC, SC Saúde, Sim Saúde, GEAP, FUSEX, Petrobras, Saúde Caixa e Particular.',
+    foto: '/equipe/rafaela_psico.jpeg',
+  },
+  {
     nome: 'Rosangela Mezari',
     registro: 'CRP 12/12404',
     metodo: 'Terapia Cognitivo Comportamental (TCC) e ABA',
