@@ -24,7 +24,7 @@ interface Prof {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   DADOS COMPLETOS — 43 PROFISSIONAIS
+   DADOS COMPLETOS — 44 PROFISSIONAIS
    ───────────────────────────────────────────────────────────── */
 const profissionais: Prof[] = [
   {
@@ -246,6 +246,17 @@ const profissionais: Prof[] = [
     demandas: 'Atende demandas relacionadas à ansiedade, depressão, tristezas, abuso sexual, estresse e esgotamento profissional, processo de autoconhecimento e autoestima, insegurança, entre outros.',
     atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), Saudesc, CELOS, ABEPOM, CASACARESC, Sim Saúde, FUSEX, SC Saúde, Petrobras, Saúde Caixa e Particular.',
     foto: '/equipe/hillary_psico.avif',
+  },
+  {
+    nome: 'Isabella Dreher Luiz',
+    registro: 'CRP 12/30596',
+    metodo: 'Psicologia Junguiana',
+    filtros: ['Junguiana'],
+    formacao: 'Graduação em Psicologia pela Universidade do Vale do Itajaí (UNIVALI). Curso de Formação em Psicopatologia e Psicofarmacologia.',
+    publico: 'Atende adolescentes a partir dos 15 anos, Adulto, Idoso. Atendimento On-line e Presencial.',
+    demandas: 'Atende demandas relacionadas à ansiedade, depressão, inseguranças, medos, sobrecarga emocional, estresse e burnout, dificuldades de sono, procrastinação, solidão, traumas, luto e perdas, automutilação e ideação suicida, imagem corporal, relação com a alimentação e com o corpo, sexualidade, identidade de gênero, vivências LGBTQIA+, preconceito, violência, conflitos familiares, relações amorosas e interpessoais, relações abusivas, separação e reorganização familiar, dificuldades emocionais, comportamentais, sociais e de aprendizagem na adolescência, bullying, transições de vida, mudanças pessoais e profissionais, envelhecimento e adaptação cultural.',
+    atendimento: 'Unimed e Particular.',
+    foto: '/equipe/isabella_psico.jpeg',
   },
   {
     nome: 'Juliana Amabile da Cruz',
