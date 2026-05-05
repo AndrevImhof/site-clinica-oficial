@@ -473,7 +473,7 @@ const profissionais: Prof[] = [
     metodo: 'Terapia Cognitivo Comportamental (TCC), Neuropsicologia',
     filtros: ['TCC', 'Neuropsicologia'],
     formacao: 'Formado em psicologia pela Universidade Estácio de Santa Catarina; Pós-graduação em Neuropsicologia na Faculdade Metropolitana - SP, Formação Internacional em Hipnose Clínica no Instituto Lucas Naves.',
-    publico: 'Atende adolescente a partir dos 14 anos, Adulto, Idoso. Atendimento On-line e Presencial.',
+    publico: 'Atende adolescente a partir dos 14 anos, Adulto, Idoso. Atendimento On-line.',
     demandas: 'Atende demandas relacionadas à ansiedade, depressão maior, bipolaridade, síndromes, transtorno alimentar, ideações suicidas, acolhimentos, manejo e resolução de problemas, luto, Regressão, fobias e traumas, outras demandas de ordens psicológicas e avaliação Psicológica, Avaliação para cirurgia bariátrica, Avaliação para esterilização/anticoncepção (laqueadura), Avaliação para esterilização/anticoncepção (vasectomia). Avaliação Psicológica em transplantes. Avaliação Psicológica em cirurgia de readequação genital.',
     atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), Saudesc, CELOS, Elosaúde, ABEPOM, CASACARESC, Sim Saúde, GEAP, FUSEX, SC Saúde, Petrobras, Saúde Caixa e Particular.',
     foto: '/equipe/wicleff_psico.avif',
