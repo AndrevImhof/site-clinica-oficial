@@ -679,7 +679,7 @@ export default function CorpoClinico() {
 
   // Quando não há filtro/busca ativos, limita a 6 por padrão no mobile
   const semFiltroAtivo = filtro === 'Todos' && busca === ''
-  const exibidos = semFiltroAtivo && !expandido ? visíveis.slice(0, 6) : visíveis
+  const exibidos = semFiltroAtivo && !expandido ? visíveis.slice(0, 10) : visíveis
   const mostrarBotaoExpandir = semFiltroAtivo && visíveis.length > 6
 
   return (
@@ -747,9 +747,16 @@ export default function CorpoClinico() {
         {visíveis.length > 0 ? (
           <>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-              {exibidos.map(p => (
-                <Card key={p.registro + p.nome} p={p} onOpen={() => setAberto(p)} />
-              ))}
+              {exibidos.map((p, i) => {
+                const esconderMobile = semFiltroAtivo && !expandido && i >= 6
+                return esconderMobile ? (
+                  <div key={p.registro + p.nome} className="hidden xl:contents">
+                    <Card p={p} onOpen={() => setAberto(p)} />
+                  </div>
+                ) : (
+                  <Card key={p.registro + p.nome} p={p} onOpen={() => setAberto(p)} />
+                )
+              })}
             </div>
 
             {/* Botão expandir — só aparece quando não há filtro/busca ativos */}
