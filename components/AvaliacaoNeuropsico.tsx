@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Brain, MessageCircle, User, Clock, FileText, Award, BookOpen, X, Monitor, MapPin } from 'lucide-react'
+import { Brain, MessageCircle, User, Clock, FileText, Award, BookOpen, Medal, X, Monitor, MapPin } from 'lucide-react'
 
 interface Psicologa {
   nome: string
@@ -40,19 +40,38 @@ const psicologas: Psicologa[] = [
 
 const WA_NEURO_LINK = 'https://wa.me/5548991908715?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20Avalia%C3%A7%C3%A3o%20Neuropsicol%C3%B3gica.'
 
-const cards = [
-  {
-    titulo: 'Neurodesenvolvimento & Inteligência',
-    texto: 'Avaliação completa para TDAH, TEA (Autismo), Deficiência Intelectual, além de mapeamento para Superdotação e Altas Habilidades.',
-  },
-  {
-    titulo: 'Funções Cognitivas & Executivas',
-    texto: 'Investigação profunda de memória, inteligência, atenção, déficits cognitivos e disfunções sociais ou executivas.',
-  },
-  {
-    titulo: 'Emocional & Personalidade',
-    texto: 'Análise clínica para auxílio diagnóstico de transtornos depressivos, estruturação de personalidade e planejamento terapêutico direcionado.',
-  },
+const infoAvaliacao = {
+  paragrafos: [
+    'A avaliação neuropsicológica é um processo clínico que investiga, em profundidade, como funcionam diferentes áreas da mente. Examinamos inteligência, atenção em suas modalidades sustentada, seletiva e alternada, memória imediata, operacional e de longo prazo, e funções executivas como planejamento, controle inibitório e flexibilidade cognitiva. Também avaliamos linguagem, habilidades visuoespaciais, praxias, velocidade de processamento, aspectos emocionais e comportamentais e habilidades sociais.',
+    'Esse mapeamento é indicado quando há suspeita ou diagnóstico de dificuldades de aprendizagem, TDAH, TEA, alterações cognitivas, ansiedade, depressão ou outras condições que afetam o desempenho e a qualidade de vida.',
+    'Conduzimos cada atendimento com ética, sigilo e rigor técnico, entregando uma devolutiva clara e um laudo detalhado ao final do processo.'
+  ]
+}
+
+interface Instrumento {
+  sigla: string
+  nome: string
+  avalia: string
+  tempo: string
+}
+
+const instrumentos: Instrumento[] = [
+  { sigla: 'WASI', nome: 'Escala Wechsler Abreviada de Inteligência', avalia: 'inteligência geral (QI estimado), raciocínio verbal e não verbal', tempo: '15 a 30 minutos por sessão' },
+  { sigla: 'WAIS', nome: 'Escala Wechsler de Inteligência para Adultos', avalia: 'inteligência global, compreensão verbal, raciocínio perceptual, memória operacional e velocidade de processamento', tempo: '60 a 120 minutos por sessão' },
+  { sigla: 'SON-R 2½–7', nome: 'Teste Não Verbal de Inteligência', avalia: 'inteligência não verbal, raciocínio abstrato e habilidades visuoespaciais (indicado para crianças pequenas ou com dificuldades de linguagem)', tempo: '45 a 60 minutos por sessão' },
+  { sigla: 'TENA', nome: 'Teste de Atenção', avalia: 'atenção concentrada e sustentada', tempo: '10 a 20 minutos por sessão' },
+  { sigla: 'BDEFS', nome: 'Barkley Deficits in Executive Functioning Scale', avalia: 'funções executivas no cotidiano (organização, autocontrole, planejamento, gestão do tempo)', tempo: '10 a 15 minutos por sessão' },
+  { sigla: 'BDI-II', nome: 'Inventário de Depressão de Beck', avalia: 'sintomas de depressão', tempo: '5 a 10 minutos por sessão' },
+  { sigla: 'BAI', nome: 'Inventário de Ansiedade de Beck', avalia: 'sintomas de ansiedade', tempo: '5 a 10 minutos por sessão' },
+  { sigla: 'Pfister', nome: 'Pirâmides Coloridas de Pfister', avalia: 'aspectos emocionais, afetivos e de personalidade', tempo: '20 a 30 minutos por sessão' },
+  { sigla: 'TAVIS', nome: 'Teste de Atenção Visual', avalia: 'atenção sustentada, seletiva e alternada', tempo: '20 a 30 minutos por sessão' },
+  { sigla: 'SRS-2', nome: 'Escala de Responsividade Social (2ª edição)', avalia: 'habilidades sociais e traços associados ao Transtorno do Espectro Autista (TEA)', tempo: '15 a 20 minutos por sessão' },
+  { sigla: 'NEUPSILIN', nome: 'Instrumento de Avaliação Neuropsicológica Breve (infantil e adulto)', avalia: 'orientação, atenção, memória, linguagem, praxias e funções executivas', tempo: '40 a 60 minutos por sessão' },
+  { sigla: 'BPA-2', nome: 'Bateria Psicológica para Avaliação da Atenção', avalia: 'atenção concentrada, dividida e alternada', tempo: '20 a 30 minutos por sessão' },
+  { sigla: 'SSRS', nome: 'Sistema de Avaliação de Habilidades Sociais', avalia: 'habilidades sociais, problemas de comportamento e competência social', tempo: '15 a 25 minutos por sessão' },
+  { sigla: 'THCP', nome: 'Teste de Habilidades Cognitivas e de Processamento', avalia: 'processamento cognitivo, raciocínio e habilidades cognitivas gerais', tempo: '30 a 50 minutos por sessão' },
+  { sigla: 'PROTEA-R', nome: 'Protocolo de Avaliação do Transtorno do Espectro Autista – Revisado', avalia: 'comportamentos e sinais relacionados ao TEA em crianças', tempo: '60 a 90 minutos por sessão' },
+  { sigla: 'IDADI', nome: 'Inventário de Desenvolvimento Infantil', avalia: 'marcos do desenvolvimento infantil (cognitivo, motor, linguagem e socioemocional)', tempo: '20 a 30 minutos por sessão' }
 ]
 
 const detalhes = [
@@ -78,6 +97,21 @@ const detalhes = [
 
 export default function AvaliacaoNeuropsico() {
   const [modalAberto, setModalAberto] = useState<Psicologa | null>(null)
+  const [modalAvaliacaoAberto, setModalAvaliacaoAberto] = useState(false)
+  const [modalInstrumentosAberto, setModalInstrumentosAberto] = useState(false)
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setModalAberto(null)
+        setModalAvaliacaoAberto(false)
+        setModalInstrumentosAberto(false)
+      }
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [])
+
   return (
     <section id="neuropsicologia" className="w-full bg-[#7C2C3B] section-padding">
       <div className="container-max">
@@ -148,47 +182,38 @@ export default function AvaliacaoNeuropsico() {
             ))}
           </div>
         </div>
-        {/* ── 1. O que avaliamos — Mobile: scroll | md+: grid ── */}
-        <div className="snap-cards flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4
-                        md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:snap-none md:pb-0 md:mx-0 md:px-0">
-          {cards.map((card) => (
-            <div
-              key={card.titulo}
-              className="bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-lg shadow-black/20
-                         flex-shrink-0 snap-start w-[82vw] min-w-[270px] md:w-auto md:min-w-0"
-            >
-              <div className="w-10 h-10 rounded-xl bg-[#F4E6E9] flex items-center justify-center flex-shrink-0">
-                <Brain className="w-5 h-5 text-[#7C2C3B]" />
-              </div>
-              <h3 className="font-serif font-bold text-[#7C2C3B] text-base leading-snug">
-                {card.titulo}
-              </h3>
-              <p className="text-neutral-600 text-sm leading-relaxed">
-                {card.texto}
-              </p>
+        {/* Cards informativos clicáveis */}
+        <div className="grid md:grid-cols-2 gap-5 mb-12">
+          <button
+            type="button"
+            onClick={() => setModalAvaliacaoAberto(true)}
+            className="group bg-white rounded-2xl p-6 md:p-8 flex items-center gap-5 shadow-lg shadow-black/20 text-left transition-all duration-200 hover:shadow-xl hover:shadow-black/25 hover:-translate-y-0.5 cursor-pointer"
+          >
+            <div className="w-14 h-14 rounded-xl bg-[#F4E6E9] flex items-center justify-center flex-shrink-0">
+              <Brain className="w-7 h-7 text-[#7C2C3B]" />
             </div>
-          ))}
+            <h3 className="font-serif font-bold text-[#7C2C3B] text-lg md:text-xl leading-snug flex-1">
+              Conheça mais sobre a Avaliação Neuropsicológica:
+            </h3>
+            <span aria-hidden className="text-[#7C2C3B] text-2xl flex-shrink-0 transition-transform duration-200 group-hover:translate-x-1">→</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setModalInstrumentosAberto(true)}
+            className="group bg-white rounded-2xl p-6 md:p-8 flex items-center gap-5 shadow-lg shadow-black/20 text-left transition-all duration-200 hover:shadow-xl hover:shadow-black/25 hover:-translate-y-0.5 cursor-pointer"
+          >
+            <div className="w-14 h-14 rounded-xl bg-[#F4E6E9] flex items-center justify-center flex-shrink-0">
+              <Medal className="w-7 h-7 text-[#7C2C3B]" />
+            </div>
+            <h3 className="font-serif font-bold text-[#7C2C3B] text-lg md:text-xl leading-snug flex-1">
+              Saiba sobre os instrumentos padrão ouro que utilizamos:
+            </h3>
+            <span aria-hidden className="text-[#7C2C3B] text-2xl flex-shrink-0 transition-transform duration-200 group-hover:translate-x-1">→</span>
+          </button>
         </div>
 
-        {/* ── 2. Qualidade — Padrão Ouro ── */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center gap-5
-                        bg-white/10 border border-white/20 rounded-2xl px-7 py-6">
-          <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-[#FCECBF]/20 border border-[#FCECBF]/30
-                          flex items-center justify-center">
-            <Award className="w-7 h-7 text-[#FCECBF]" />
-          </div>
-          <div>
-            <p className="text-[#FCECBF] font-bold text-base sm:text-lg leading-snug mb-1">
-              Instrumentos Padrão Ouro
-            </p>
-            <p className="text-white/70 text-sm leading-relaxed">
-              Utilizamos testes de referência mundial e nacional (como <strong className="text-white/90">WISC</strong> e <strong className="text-white/90">Neupsilin</strong>),
-              garantindo diagnósticos de alta precisão e validade médica e escolar.
-            </p>
-          </div>
-        </div>
-
-        {/* ── 3. Como funciona — Detalhes ── */}
+        {/* ── Como funciona — Detalhes ── */}
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10">
           {detalhes.map(({ icon: Icon, label, valor, obs }, i) => (
             <div
@@ -314,6 +339,110 @@ export default function AvaliacaoNeuropsico() {
                 </div>
               </div>
             </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal: Sobre a Avaliação Neuropsicológica */}
+      {modalAvaliacaoAberto && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+          onClick={() => setModalAvaliacaoAberto(false)}
+        >
+          <div
+            className="relative bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setModalAvaliacaoAberto(false)}
+              aria-label="Fechar"
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-colors"
+            >
+              <X className="w-4 h-4 text-neutral-700" />
+            </button>
+
+            <div className="overflow-y-auto max-h-[90vh]">
+              <div className="p-6 md:p-10">
+                <div className="flex items-center gap-4 mb-6 pr-12">
+                  <div className="w-12 h-12 rounded-xl bg-[#F4E6E9] flex items-center justify-center flex-shrink-0">
+                    <Brain className="w-6 h-6 text-[#7C2C3B]" />
+                  </div>
+                  <h2 className="font-serif font-bold text-[#7C2C3B] text-xl md:text-2xl leading-snug">
+                    Sobre a Avaliação Neuropsicológica
+                  </h2>
+                </div>
+
+                <div className="space-y-4">
+                  {infoAvaliacao.paragrafos.map((p, i) => (
+                    <p key={i} className="text-neutral-700 text-sm md:text-base leading-relaxed">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal: Instrumentos utilizados */}
+      {modalInstrumentosAberto && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+          onClick={() => setModalInstrumentosAberto(false)}
+        >
+          <div
+            className="relative bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setModalInstrumentosAberto(false)}
+              aria-label="Fechar"
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center transition-colors"
+            >
+              <X className="w-4 h-4 text-neutral-700" />
+            </button>
+
+            <div className="overflow-y-auto max-h-[90vh]">
+              <div className="p-6 md:p-10">
+                <div className="flex items-center gap-4 mb-4 pr-12">
+                  <div className="w-12 h-12 rounded-xl bg-[#F4E6E9] flex items-center justify-center flex-shrink-0">
+                    <Medal className="w-6 h-6 text-[#7C2C3B]" />
+                  </div>
+                  <h2 className="font-serif font-bold text-[#7C2C3B] text-xl md:text-2xl leading-snug">
+                    Instrumentos utilizados nas avaliações
+                  </h2>
+                </div>
+
+                <p className="text-neutral-700 text-sm md:text-base leading-relaxed mb-8">
+                  Utilizamos instrumentos de referência mundial e nacional, considerados <span className="font-semibold text-[#7C2C3B]">Padrão Ouro</span> em avaliação neuropsicológica, garantindo diagnósticos de alta precisão e validade médica e escolar. <span className="font-semibold text-[#7C2C3B]">São eles:</span>
+                </p>
+
+                <div className="space-y-3">
+                  {instrumentos.map((inst) => (
+                    <div
+                      key={inst.sigla}
+                      className="bg-neutral-50 border border-neutral-200 rounded-xl p-4 md:p-5"
+                    >
+                      <div className="flex items-baseline gap-2 mb-2 flex-wrap">
+                        <h3 className="font-serif font-bold text-[#7C2C3B] text-base md:text-lg">
+                          {inst.sigla}
+                        </h3>
+                        <span className="text-neutral-500 text-xs md:text-sm">— {inst.nome}</span>
+                      </div>
+                      <p className="text-neutral-700 text-sm leading-relaxed mb-1">
+                        <span className="font-semibold text-[#7C2C3B]">Avalia:</span> {inst.avalia}
+                      </p>
+                      <p className="text-neutral-700 text-sm leading-relaxed">
+                        <span className="font-semibold text-[#7C2C3B]">Tempo médio:</span> {inst.tempo}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
