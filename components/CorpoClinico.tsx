@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import Image from 'next/image'
-import { X, MessageCircle, ChevronRight, Monitor, MapPin, Search } from 'lucide-react'
+import { X, MessageCircle, ChevronRight, ChevronDown, Monitor, MapPin, Search } from 'lucide-react'
 import { type Prof, profissionais } from '@/lib/profissionais'
 
 const WA_LINK = 'https://wa.me/5548998056893'
@@ -289,8 +289,8 @@ export default function CorpoClinico() {
                   {expandido
                     ? 'Ver menos'
                     : `Ver todos os ${visíveis.length} profissionais`}
-                  <ChevronRight className={`w-4 h-4 transition-transform duration-200
-                                            ${expandido ? 'rotate-90' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200
+                                            ${expandido ? 'rotate-180' : ''}`} />
                 </button>
               </div>
             )}
