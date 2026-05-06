@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { Brain, MessageCircle, User, Clock, FileText, Award, X, Monitor, MapPin } from 'lucide-react'
+import { Brain, MessageCircle, User, Clock, FileText, Award, BookOpen, X, Monitor, MapPin } from 'lucide-react'
 
 interface Psicologa {
   nome: string
   registro: string
   metodo: string
+  biografia: string
   formacao: string
   publico: string
   demandas: string
@@ -19,6 +20,7 @@ const psicologas: Psicologa[] = [
     nome: 'Catarina Geoffroy',
     registro: 'CRP 12/21876',
     metodo: 'Terapia Cognitivo Comportamental (TCC), Neuropsicologia e ABA',
+    biografia: 'Psicóloga formada pela UFF/RJ em 2004. Tenho pós-graduação em autismo, ABA, TCC e neuropsicologia. Atuei como psicóloga clínica sob a abordagem da Terapia Cognitivo–Comportamental. Fiz parte da equipe multidisciplinar da Clínica Escola do autista, posteriormente Centro de Referência Municipal em Autismo Prof. Maria José da Silva Rodrigues, ambos na cidade de São Gonçalo, RJ.\n\nEm 2021 mudei para Florianópolis SC, atuando ainda como psicóloga clínica, sob a abordagem da TCC, desenvolvendo acompanhamento psicoterapêutico presencial infantil, juvenil e adulto (atendimento remoto a partir de 15 anos), orientação parental e avaliação psicológica com ênfase na investigação neuropsicológica referente a transtornos do neurodesenvolvimento, alterações comportamentais e cognitivas. Fiz a Pós-Graduação em Neuropsicologia no IPOG, referência em curso e avaliações neuropsicológicas.',
     formacao: 'Psicóloga formada pela UFF/RJ em 2004. Pós-graduação em Autismo, ABA, TCC e Neuropsicologia (IPOG). Atuou como psicóloga clínica na abordagem TCC e fez parte da equipe multidisciplinar do Centro de Referência Municipal em Autismo Prof. Maria José da Silva Rodrigues (São Gonçalo, RJ). Em 2021 mudou-se para Florianópolis/SC.',
     publico: 'Atendimento presencial infantil, juvenil e adulto. Atendimento remoto a partir de 15 anos. Orientação parental e avaliação neuropsicológica.',
     demandas: 'TEA, TDAH, TOD, ansiedade, depressão, dificuldades e transtornos socioemocionais, transtornos alimentares, luto, fobias, estresse pós-traumático, gênero e sexualidade, conflitos familiares e de relacionamentos.',
@@ -28,6 +30,7 @@ const psicologas: Psicologa[] = [
     nome: 'Anna de Lima Estanislau',
     registro: 'CRP 12/13484',
     metodo: 'Terapia Cognitivo-Comportamental (TCC) e Neuropsicologia',
+    biografia: 'Sou neuropsicóloga especializada em avaliação neuropsicológica de crianças, adolescentes e adultos, com atuação clínica voltada à investigação detalhada do funcionamento cognitivo, emocional e comportamental.\n\nRealizo avaliações completas com o objetivo de auxiliar no diagnóstico diferencial, planejamento terapêutico e orientação para intervenções clínicas e educacionais. O processo envolve entrevista clínica, aplicação de instrumentos padronizados e análise integrada dos resultados.',
     formacao: 'Psicóloga formada desde 2014 pelo Centro Universitário CESUSC (Florianópolis/SC). Pós-graduação em Terapia Cognitivo-Comportamental pelo Instituto Cognitio (2020) e em Neuropsicologia pela UNIASSELVI (2024). Experiência em atendimento clínico infantil, incluindo equoterapia, com foco em crianças com diferentes condições neurológicas e do neurodesenvolvimento.',
     publico: 'Atendimento clínico infantil, juvenil e adulto. Modalidades online e presencial.',
     demandas: 'Avaliação neuropsicológica com foco em TEA, TDAH e outras condições do neurodesenvolvimento. Identificação de déficits em funções cognitivas e executivas, com orientação para intervenções terapêuticas e encaminhamentos.',
@@ -236,7 +239,7 @@ export default function AvaliacaoNeuropsico() {
           onClick={() => setModalAberto(null)}
         >
           <div
-            className="relative bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            className="relative bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -247,6 +250,7 @@ export default function AvaliacaoNeuropsico() {
               <X className="w-5 h-5 text-neutral-700" />
             </button>
 
+            <div className="overflow-y-auto max-h-[90vh]">
             <div className="p-6 md:p-10">
               <div className="flex flex-col md:flex-row items-center gap-6 mb-8 pb-8 border-b border-neutral-200">
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-[#FCECBF]/60">
@@ -273,6 +277,13 @@ export default function AvaliacaoNeuropsico() {
 
               <div className="space-y-6">
                 <div>
+                  <h4 className="text-[#7C2C3B] font-bold text-xs uppercase tracking-widest mb-2 flex items-center gap-2">
+                    <BookOpen className="w-4 h-4" />
+                    Biografia
+                  </h4>
+                  <p className="text-neutral-700 text-sm leading-relaxed whitespace-pre-line mb-4">
+                    {modalAberto.biografia}
+                  </p>
                   <h4 className="text-[#7C2C3B] font-bold text-xs uppercase tracking-widest mb-2 flex items-center gap-2">
                     <Award className="w-4 h-4" />
                     Formação
@@ -302,6 +313,7 @@ export default function AvaliacaoNeuropsico() {
                   </p>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>
