@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /equipe/card-export/
+Disallow: /equipe/neuropsico-export/

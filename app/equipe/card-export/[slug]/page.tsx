@@ -15,16 +15,19 @@ export function generateStaticParams() {
 }
 
 export default function CardExport({ params }: Props) {
+  if (process.env.NODE_ENV === 'production' && !process.env.ALLOW_CARD_EXPORT) {
+    notFound()
+  }
+
   const p = profissionais.find(p => slugify(p.nome) === params.slug)
   if (!p) notFound()
 
   const { online, presencial } = detectarModalidade(p.publico)
 
-  const demandaPreview = p.demandas
+  const demandas = p.demandas
     .replace(/\n/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
-    .slice(0, 280)
 
   const nomePartes = p.nome.split(' ')
   const primeiroNome = nomePartes[0]
@@ -150,18 +153,17 @@ export default function CardExport({ params }: Props) {
         <div style={{ margin: '56px 80px 0', height: '1px', background: 'rgba(255,255,255,0.15)', position: 'relative', zIndex: 1 }} />
 
         {/* Demandas */}
-        <div style={{ margin: '48px 80px 0', flex: 1, position: 'relative', zIndex: 1 }}>
+        <div id="demandas-container" style={{ margin: '48px 80px 0', flex: 1, overflow: 'hidden', position: 'relative', zIndex: 1 }}>
           <div style={{
             fontSize: '18px', fontWeight: 700, letterSpacing: '4px', textTransform: 'uppercase',
             color: 'rgba(252,236,191,0.55)', marginBottom: '24px',
           }}>
             Áreas de atuação
           </div>
-          <div style={{
-            fontSize: '32px', lineHeight: 1.6, color: 'rgba(255,255,255,0.78)',
-            display: '-webkit-box', WebkitLineClamp: 5, WebkitBoxOrient: 'vertical', overflow: 'hidden',
+          <div id="demandas-text" style={{
+            fontSize: '29px', lineHeight: 1.6, color: 'rgba(255,255,255,0.78)',
           }}>
-            {demandaPreview}{p.demandas.length > 280 ? '...' : ''}
+            {demandas}
           </div>
         </div>
 
@@ -174,15 +176,61 @@ export default function CardExport({ params }: Props) {
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           position: 'relative', zIndex: 1,
         }}>
-          <div style={{ fontSize: '26px', color: 'rgba(255,255,255,0.45)', letterSpacing: '1px' }}>
-            Centro de Florianópolis — SC
+          {/* Endereço */}
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '18px' }}>
+            <svg style={{ flexShrink: 0, marginTop: '5px' }} width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <div>
+              <div style={{ fontSize: '26px', color: 'rgba(255,255,255,0.45)', letterSpacing: '1px', lineHeight: 1.45 }}>
+                Rua Felipe Schmidt, 515 — Centro
+              </div>
+              <div style={{ fontSize: '26px', color: 'rgba(255,255,255,0.45)', letterSpacing: '1px', lineHeight: 1.45 }}>
+                Edifício Pórtico, Florianópolis — SC
+              </div>
+              <div style={{ fontSize: '26px', color: 'rgba(255,255,255,0.45)', letterSpacing: '1px', lineHeight: 1.45 }}>
+                Sala 204 — 2º andar
+              </div>
+            </div>
           </div>
-          <div style={{ fontSize: '26px', color: 'rgba(252,236,191,0.6)', fontWeight: 600 }}>
-            @clinica.lucianonoceti
+
+          {/* WhatsApp */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="rgba(252,236,191,0.6)">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <div style={{ fontSize: '26px', color: 'rgba(252,236,191,0.6)', fontWeight: 600, letterSpacing: '1px' }}>
+              (48) 99805-6893
+            </div>
           </div>
         </div>
 
       </div>
+
+      {/* Auto-shrink: reduz a fonte das áreas de atuação até o texto caber sem ser clipado */}
+      <script dangerouslySetInnerHTML={{ __html: `
+        (function () {
+          function autoShrink() {
+            var container = document.getElementById('demandas-container');
+            var text = document.getElementById('demandas-text');
+            if (!container || !text) return;
+            var size = parseFloat(getComputedStyle(text).fontSize) || 29;
+            var min = 18;
+            while (size > min && container.scrollHeight > container.clientHeight) {
+              size -= 1;
+              text.style.fontSize = size + 'px';
+            }
+          }
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function () {
+              requestAnimationFrame(autoShrink);
+            });
+          } else {
+            requestAnimationFrame(autoShrink);
+          }
+        })();
+      ` }} />
     </main>
   )
 }

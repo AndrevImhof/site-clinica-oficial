@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cards": "node scripts/generate-cards.mjs"
+    "cards": "node scripts/generate-cards.mjs",
+    "cards:neuro": "node scripts/generate-neuro-cards.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.372.0",

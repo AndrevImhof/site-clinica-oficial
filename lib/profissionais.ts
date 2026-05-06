@@ -8,6 +8,7 @@ export interface Prof {
   demandas: string
   atendimento: string
   foto: string
+  fazNeuropsico?: boolean
 }
 
 export function slugify(nome: string): string {
@@ -66,6 +67,17 @@ export const profissionais: Prof[] = [
     foto: '/equipe/andreluiz_psico.jpeg',
   },
   {
+    nome: 'André Pagani',
+    registro: 'CRP 12/20097',
+    metodo: 'Neuropsicologia e Análise do Comportamento (ABA)',
+    filtros: ['Neuropsicologia', 'ABA'],
+    formacao: 'Graduação em Psicologia pelo CESUSC. Pós-graduação em Análise do Comportamento Aplicada (ABA) pela ESCON. Pós-graduação em Neuropsicologia pela Faculdade Metropolitana.',
+    publico: 'Atende a partir de 3 anos de idade. Atendimento On-line e Presencial.',
+    demandas: 'Depressão, ansiedade, TOC, autismo, desenvolvimento cognitivo, autodesenvolvimento, autoconhecimento, bipolaridade e borderline.',
+    atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), FUSEX, CELOS, Elosaúde, Saudesc, CASACARESC, ABEPOM, Sim Saúde, GEAP, SC Saúde e Particular.',
+    foto: '/equipe/andre_psico.jpeg',
+  },
+  {
     nome: 'Anna de Lima Estanislau',
     registro: 'CRP 12/13484',
     metodo: 'Terapia Cognitivo Comportamental (TCC)',
@@ -75,6 +87,7 @@ export const profissionais: Prof[] = [
     demandas: 'Ansiedade, Compulsões, Depressão, Dor emocional, Estresse, Estresse Pós Traumático, Fobia Social, Fobias Medos, Fobias Morte, Luto, Obesidade, Sexualidade e Identidade de Gênero, Síndrome do Pânico, Suicídio, TOC (Transtorno Obsessivo Compulsivo), TDAH (Transtorno do déficit de atenção com hiperatividade), Transtorno Bipolar, Transtorno de Humor, Transtornos Alimentares (Bulimia, Anorexia, etc), Transtornos do Sono, Pânico, Episódios depressivos, sexualidades, Pessoas vítimas de traumas e preconceitos, Dependência química, Preocupações, Pensamentos recorrentes de perigo ou morte, Pensamentos de autocrítica, Sentimento de culpa, Crenças de incapacidade, entre outros.',
     atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), Saudesc, CELOS, Elosaúde, ABEPOM, CASACARESC, SC Saúde, Sim Saúde, GEAP, FUSEX, Petrobras, Saúde Caixa e Particular.',
     foto: '/equipe/annaestanislau_psico.avif',
+    fazNeuropsico: true,
   },
   {
     nome: 'Beatriz Zoccoler Beu dos Santos',
@@ -141,6 +154,7 @@ export const profissionais: Prof[] = [
     demandas: 'Avaliação neuropsicológica, transtornos de neurodesenvolvimento, dificuldades de aprendizagem, transtornos de ansiedade, transtornos depressivos, transtornos de humor, transtorno de personalidade, transtornos alimentares, luto, estresse, pânico, desenvolvimento de habilidades sociais, estresse pós traumático, gênero e sexualidade, conflitos familiares e de relacionamento, orientação parental.',
     atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), Saudesc, CELOS, Elosaúde, ABEPOM, CASACARESC, SC Saúde, Sim Saúde, GEAP, FUSEX, Petrobras, Saúde Caixa e Particular.',
     foto: '/equipe/catarina_neuro.jpeg',
+    fazNeuropsico: true,
   },
   {
     nome: 'Clara Schmidt da Cruz',
