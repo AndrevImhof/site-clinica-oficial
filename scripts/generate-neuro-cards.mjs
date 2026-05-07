@@ -9,13 +9,14 @@ const OUT_DIR = path.resolve(__dirname, '../cards-neuropsico')
 
 const CARDS = [
   { id: 1, name: '01-capa' },
-  { id: 2, name: '02-o-que-e' },
-  { id: 3, name: '03-como-e-feita' },
-  { id: 4, name: '04-o-que-sera-avaliado' },
-  { id: 5, name: '05-tempo-devolutiva' },
-  { id: 6, name: '06-beneficios' },
-  { id: 7, name: '07-profissionais' },
-  { id: 8, name: '08-cta-agendamento' },
+  { id: 2, name: '02-anna' },
+  { id: 3, name: '03-catarina' },
+  { id: 4, name: '04-o-que-e' },
+  { id: 5, name: '05-como-e-feita' },
+  { id: 6, name: '06-o-que-sera-avaliado' },
+  { id: 7, name: '07-tempo-devolutiva' },
+  { id: 8, name: '08-beneficios' },
+  { id: 9, name: '09-cta-agendamento' },
 ]
 
 async function main() {

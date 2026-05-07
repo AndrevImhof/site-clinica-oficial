@@ -80,14 +80,108 @@ function Card1() {
       <div style={{ fontSize: '38px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.55, maxWidth: '820px', fontWeight: 300 }}>
         Uma investigação detalhada do funcionamento cognitivo e emocional
       </div>
+
+      <div style={{ marginTop: '80px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+        <div style={{ fontSize: '38px', color: GOLD_DIM, fontWeight: 500, textAlign: 'center', lineHeight: 1.3, maxWidth: '780px' }}>
+          <span>Saiba como funciona e conheça nossas profissionais</span>
+        </div>
+      </div>
     </div>
   )
 }
 
-// ─── Card 2 — O que é + Para quem ───────────────────────────────────────────
-function Card2() {
+// ─── Card 2 — Anna ───────────────────────────────────────────────────────────
+function Card2({ anna }: { anna?: Prof }) {
+  if (!anna) return null
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '60px 80px', overflow: 'hidden' }}>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '60px 80px', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '80px' }}>
+      {/* Foto circular grande */}
+      <div style={{ width: '340px', height: '340px', borderRadius: '50%', overflow: 'hidden', border: `3px solid ${GOLD_BORDER}`, marginBottom: '40px', flexShrink: 0 }}>
+        <img src={anna.foto} alt={anna.nome} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+
+      {/* Nome */}
+      <div style={{ fontFamily: SERIF, fontSize: '68px', fontWeight: 700, color: 'white', textAlign: 'center', lineHeight: 1.1, marginBottom: '18px' }}>
+        {anna.nome}
+      </div>
+
+      {/* Especialidade */}
+      <div style={{ fontSize: '28px', color: GOLD_DIM, textAlign: 'center', marginBottom: '14px' }}>
+        Psicóloga — TCC e Neuropsicóloga
+      </div>
+
+      {/* CRP em badge */}
+      <div style={{ display: 'inline-block', padding: '8px 20px', borderRadius: '40px', background: WHITE_GHOST, border: `1px solid ${GOLD_BORDER}`, color: 'white', fontSize: '24px', marginBottom: '40px' }}>
+        {anna.registro}
+      </div>
+
+      {/* Bio */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', alignItems: 'flex-start', maxWidth: '780px', marginTop: '80px' }}>
+        {[
+          'Formada CESUSC (2014)',
+          'Pós em TCC (Instituto Cognitio, 2020)',
+          'Pós em Neuropsicologia (UNIASSELVI, 2024)',
+          'Atendimento clínico infantil, incluindo equoterapia',
+          'Foco em TEA, TDAH e neurodesenvolvimento'
+        ].map((item, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: '20px', fontSize: '38px', color: WHITE_FAINT, lineHeight: 1.4 }}>
+            <span style={{ color: GOLD_DIM, fontSize: '32px', flexShrink: 0 }}>✦</span>
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ─── Card 3 — Catarina ───────────────────────────────────────────────────────
+function Card3({ catarina }: { catarina?: Prof }) {
+  if (!catarina) return null
+  return (
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '60px 80px', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '80px' }}>
+      {/* Foto circular grande */}
+      <div style={{ width: '340px', height: '340px', borderRadius: '50%', overflow: 'hidden', border: `3px solid ${GOLD_BORDER}`, marginBottom: '40px', flexShrink: 0 }}>
+        <img src={catarina.foto} alt={catarina.nome} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+
+      {/* Nome */}
+      <div style={{ fontFamily: SERIF, fontSize: '68px', fontWeight: 700, color: 'white', textAlign: 'center', lineHeight: 1.1, marginBottom: '18px' }}>
+        {catarina.nome}
+      </div>
+
+      {/* Especialidade */}
+      <div style={{ fontSize: '28px', color: GOLD_DIM, textAlign: 'center', marginBottom: '14px' }}>
+        Psicóloga — Atendimento TEA
+      </div>
+
+      {/* CRP em badge */}
+      <div style={{ display: 'inline-block', padding: '8px 20px', borderRadius: '40px', background: WHITE_GHOST, border: `1px solid ${GOLD_BORDER}`, color: 'white', fontSize: '24px', marginBottom: '40px' }}>
+        {catarina.registro}
+      </div>
+
+      {/* Bio */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', alignItems: 'flex-start', maxWidth: '780px', marginTop: '80px' }}>
+        {[
+          'Formada UFF/RJ (2004)',
+          'Pós em Autismo, ABA, TCC e Neuropsicologia (IPOG)',
+          '20+ anos de atuação clínica',
+          'Equipe multidisciplinar do Centro de Referência em Autismo (RJ)',
+          'Foco em transtornos do neurodesenvolvimento'
+        ].map((item, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: '20px', fontSize: '38px', color: WHITE_FAINT, lineHeight: 1.4 }}>
+            <span style={{ color: GOLD_DIM, fontSize: '32px', flexShrink: 0 }}>✦</span>
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ─── Card 4 — O que é + Para quem ───────────────────────────────────────────
+function Card4() {
+  return (
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '60px 80px', overflow: 'hidden' }}>
       {/* cardTitle: 52px */}
       <SectionTitle text="O que é a Avaliação Neuropsicológica?" size={52} />
       {/* bodyText: 32px */}
@@ -104,7 +198,7 @@ function Card2() {
         Pessoas com:
       </div>
       {/* listItem: 30px (via BulletItem) */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
         {[
           'Esquecimentos frequentes ou confusão mental',
           'Dificuldade de atenção ou foco',
@@ -117,8 +211,8 @@ function Card2() {
   )
 }
 
-// ─── Card 3 — Como é feita ───────────────────────────────────────────────────
-function Card3() {
+// ─── Card 5 — Como é feita ───────────────────────────────────────────────────
+function Card5() {
   const steps = [
     {
       num: '01',
@@ -174,8 +268,8 @@ function Card3() {
   )
 }
 
-// ─── Card 4 — O que será avaliado ───────────────────────────────────────────
-function Card4() {
+// ─── Card 6 — O que será avaliado ───────────────────────────────────────────
+function Card6() {
   const items = [
     { bold: 'Atenção e Concentração', text: 'capacidade de focar e sustentar atenção' },
     { bold: 'Memória', text: 'habilidade de reter e recordar informações' },
@@ -209,8 +303,8 @@ function Card4() {
   )
 }
 
-// ─── Card 5 — Quanto tempo + Devolutiva ─────────────────────────────────────
-function Card5() {
+// ─── Card 7 — Quanto tempo + Devolutiva ─────────────────────────────────────
+function Card7() {
   return (
     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '60px 80px', justifyContent: 'center' }}>
       <div>
@@ -240,8 +334,8 @@ function Card5() {
   )
 }
 
-// ─── Card 6 — Benefícios ─────────────────────────────────────────────────────
-function Card6() {
+// ─── Card 8 — Benefícios ─────────────────────────────────────────────────────
+function Card8() {
   const items = [
     'Ajuda no diagnóstico de doenças neurológicas e psicológicas',
     'Orienta tratamentos',
@@ -270,68 +364,9 @@ function Card6() {
   )
 }
 
-// ─── Card 7 — Profissionais (hierarquia própria; título ajustado para 52px) ──
-function Card7({ catarina, anna }: { catarina?: Prof; anna?: Prof }) {
-  const profs: Array<{ p?: Prof; title: string }> = [
-    { p: catarina, title: 'Psicóloga — Atendimento TEA' },
-    { p: anna, title: 'Psicóloga — TCC e Neuropsicóloga' },
-  ]
 
-  return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '60px 80px' }}>
-      {/* cardTitle: 52px */}
-      <SectionTitle text="Conheça nossos profissionais" size={52} />
-      <div style={{ fontSize: '26px', color: WHITE_FAINT, marginBottom: '52px' }}>
-        Atendimentos infantis, adolescentes e adultos
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '44px', flex: 1, justifyContent: 'center' }}>
-        {profs.map(({ p, title }, i) => {
-          if (!p) return null
-          return (
-            <div key={i} style={{
-              display: 'flex', gap: '48px', alignItems: 'center',
-              background: WHITE_GHOST, borderRadius: '24px',
-              border: `1px solid ${GOLD_BORDER}`,
-              padding: '44px 52px',
-            }}>
-              {/* Foto */}
-              <div style={{
-                width: '200px', height: '200px', borderRadius: '50%', overflow: 'hidden',
-                border: `4px solid ${GOLD_BORDER}`,
-                boxShadow: `0 0 0 8px rgba(252,236,191,0.06), 0 16px 40px rgba(0,0,0,0.4)`,
-                flexShrink: 0,
-              }}>
-                <img src={p.foto} alt={p.nome} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
-
-              {/* Texto */}
-              <div>
-                <div style={{ fontFamily: SERIF, fontSize: '52px', fontWeight: 700, color: 'white', lineHeight: 1.1, marginBottom: '14px' }}>
-                  {p.nome}
-                </div>
-                <div style={{ fontSize: '28px', color: GOLD_DIM, lineHeight: 1.4, marginBottom: '20px' }}>
-                  {title}
-                </div>
-                <div style={{
-                  display: 'inline-block',
-                  background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)',
-                  borderRadius: '40px', padding: '10px 28px',
-                  fontSize: '24px', fontWeight: 600, color: 'rgba(252,236,191,0.85)',
-                }}>
-                  {p.registro}
-                </div>
-              </div>
-            </div>
-          )
-        })}
-      </div>
-    </div>
-  )
-}
-
-// ─── Card 8 — CTA ────────────────────────────────────────────────────────────
-function Card8() {
+// ─── Card 9 — CTA ────────────────────────────────────────────────────────────
+function Card9() {
   return (
     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '56px 80px', justifyContent: 'center' }}>
       {/* cardTitle: 52px */}
@@ -370,15 +405,32 @@ function Card8() {
         </div>
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: '24px',
-          background: 'rgba(37,211,102,0.12)', borderRadius: '72px',
-          border: '2px solid rgba(37,211,102,0.4)',
+          background: GOLD_FAINT, borderRadius: '72px',
+          border: `2px solid ${GOLD_BORDER}`,
           padding: '28px 52px', alignSelf: 'flex-start',
         }}>
           <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(37,211,102,0.85)">
             <path d={WA_PATH} />
           </svg>
-          <div style={{ fontSize: '60px', fontWeight: 700, color: 'rgba(252,236,191,0.95)', letterSpacing: '1px' }}>
+          <div style={{ fontSize: '48px', fontWeight: 700, color: 'rgba(252,236,191,0.95)', letterSpacing: '1px' }}>
             {NEURO_PHONE}
+          </div>
+        </div>
+
+        <div style={{ marginTop: '40px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <div style={{ fontSize: '28px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: GOLD, marginBottom: '28px' }}>
+            Visite nosso site
+          </div>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '24px',
+            background: GOLD_FAINT, borderRadius: '72px',
+            border: `2px solid ${GOLD_BORDER}`,
+            padding: '28px 52px', alignSelf: 'flex-start',
+          }}>
+            <span style={{ fontSize: '48px', lineHeight: 1 }}>🌐</span>
+            <div style={{ fontSize: '48px', fontWeight: 700, color: 'rgba(252,236,191,0.95)', letterSpacing: '1px' }}>
+              lucianonoceti.com.br
+            </div>
           </div>
         </div>
       </div>
@@ -393,7 +445,7 @@ export default function NeuroCardExport({ params }: Props) {
   }
 
   const id = parseInt(params.id, 10)
-  if (isNaN(id) || id < 1 || id > 8) notFound()
+  if (isNaN(id) || id < 1 || id > 9) notFound()
 
   const catarina = profissionais.find(p => p.fazNeuropsico && p.nome === 'Catarina Geoffroy')
   const anna     = profissionais.find(p => p.fazNeuropsico && p.nome === 'Anna de Lima Estanislau')
@@ -452,13 +504,14 @@ export default function NeuroCardExport({ params }: Props) {
         {/* Conteúdo dinâmico */}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', position: 'relative', zIndex: 1 }}>
           {id === 1 && <Card1 />}
-          {id === 2 && <Card2 />}
-          {id === 3 && <Card3 />}
+          {id === 2 && <Card2 anna={anna} />}
+          {id === 3 && <Card3 catarina={catarina} />}
           {id === 4 && <Card4 />}
           {id === 5 && <Card5 />}
           {id === 6 && <Card6 />}
-          {id === 7 && <Card7 catarina={catarina} anna={anna} />}
+          {id === 7 && <Card7 />}
           {id === 8 && <Card8 />}
+          {id === 9 && <Card9 />}
         </div>
 
         {/* Rodapé */}
