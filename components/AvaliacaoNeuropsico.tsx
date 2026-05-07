@@ -207,7 +207,7 @@ export default function AvaliacaoNeuropsico() {
               <Medal className="w-7 h-7 text-[#7C2C3B]" />
             </div>
             <h3 className="font-serif font-bold text-[#7C2C3B] text-lg md:text-xl leading-snug flex-1">
-              Saiba sobre os instrumentos padrão ouro que utilizamos:
+              Saiba sobre os instrumentos de avaliação padrão ouro que utilizamos:
             </h3>
             <span aria-hidden className="text-[#7C2C3B] text-2xl flex-shrink-0 transition-transform duration-200 group-hover:translate-x-1">→</span>
           </button>
