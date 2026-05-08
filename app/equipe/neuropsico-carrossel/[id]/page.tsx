@@ -1,3 +1,4 @@
+import { profissionais, Prof } from '@/lib/profissionais'
 import { notFound } from 'next/navigation'
 
 interface Props {
@@ -107,6 +108,49 @@ function FooterEscuro() {
   )
 }
 
+// ─── Card 2 — Anna ───────────────────────────────────────────────────────────
+function Card2Anna({ anna }: { anna?: Prof }) {
+  if (!anna) return null
+  return (
+    <div style={{
+      flex: 1, display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center',
+      padding: '40px 80px', position: 'relative', zIndex: 1,
+    }}>
+      <div style={{ width: '240px', height: '240px', borderRadius: '50%', overflow: 'hidden', border: `3px solid ${GOLD_BORDER}`, flexShrink: 0 }}>
+        <img src={anna.foto} alt={anna.nome} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+
+      <div style={{ fontFamily: SERIF, fontSize: '56px', fontWeight: 700, color: 'white', textAlign: 'center', lineHeight: 1.1, marginTop: '24px' }}>
+        {anna.nome}
+      </div>
+
+      <div style={{ fontSize: '26px', color: GOLD_DIM, textAlign: 'center', marginTop: '12px' }}>
+        Psicóloga — TCC e Neuropsicóloga
+      </div>
+
+      <div style={{ display: 'inline-block', padding: '8px 20px', borderRadius: '40px', background: WHITE_GHOST, border: `1px solid ${GOLD_BORDER}`, color: 'white', fontSize: '24px', marginTop: '16px' }}>
+        {anna.registro}
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '28px', alignItems: 'flex-start', maxWidth: '860px', width: '100%', marginTop: '48px' }}>
+        {[
+          'Formada CESUSC (2014)',
+          'Pós em TCC (Instituto Cognitio, 2020)',
+          'Pós em Neuropsicologia (UNIASSELVI, 2024)',
+          'Atendimento clínico infantil, incluindo equoterapia',
+          'Foco em TEA, TDAH e neurodesenvolvimento',
+        ].map((item, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: '20px', fontSize: '30px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}>
+            <span style={{ color: GOLD_DIM, fontSize: '26px', flexShrink: 0 }}>✦</span>
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 // ─── Card 1 — Capa ───────────────────────────────────────────────────────────
 function Card1Capa() {
   return (
@@ -139,6 +183,306 @@ function Card1Capa() {
   )
 }
 
+// ─── Card 3 — Catarina ───────────────────────────────────────────────────────
+function Card3Catarina({ catarina }: { catarina?: Prof }) {
+  if (!catarina) return null
+  return (
+    <div style={{
+      flex: 1, display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center',
+      padding: '40px 80px', position: 'relative', zIndex: 1,
+    }}>
+      <div style={{ width: '240px', height: '240px', borderRadius: '50%', overflow: 'hidden', border: `3px solid ${GOLD_BORDER}`, flexShrink: 0 }}>
+        <img src={catarina.foto} alt={catarina.nome} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+      <div style={{ fontFamily: SERIF, fontSize: '56px', fontWeight: 700, color: 'white', textAlign: 'center', lineHeight: 1.1, marginTop: '24px' }}>
+        {catarina.nome}
+      </div>
+      <div style={{ fontSize: '26px', color: GOLD_DIM, textAlign: 'center', marginTop: '12px' }}>
+        Psicóloga — Atendimento TEA
+      </div>
+      <div style={{ display: 'inline-block', padding: '8px 20px', borderRadius: '40px', background: WHITE_GHOST, border: `1px solid ${GOLD_BORDER}`, color: 'white', fontSize: '24px', marginTop: '16px' }}>
+        {catarina.registro}
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '28px', alignItems: 'flex-start', maxWidth: '860px', width: '100%', marginTop: '48px' }}>
+        {[
+          'Formada UFF/RJ (2004)',
+          'Pós em Autismo, ABA, TCC e Neuropsicologia (IPOG)',
+          '20+ anos de atuação clínica',
+          'Equipe multidisciplinar do Centro de Referência em Autismo (RJ)',
+          'Foco em transtornos do neurodesenvolvimento',
+        ].map((item, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: '20px', fontSize: '30px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}>
+            <span style={{ color: GOLD_DIM, fontSize: '26px', flexShrink: 0 }}>✦</span>
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ─── Card 4 — O que é ────────────────────────────────────────────────────────
+function Card4OQueE() {
+  return (
+    <div style={{
+      flex: 1, display: 'flex', flexDirection: 'column',
+      justifyContent: 'center', padding: '48px 80px',
+      position: 'relative', zIndex: 1,
+    }}>
+      <div style={{ fontFamily: SERIF, fontSize: '44px', fontWeight: 700, color: GOLD, lineHeight: 1.15 }}>
+        O que é a Avaliação Neuropsicológica?
+      </div>
+      <div style={{ fontSize: '26px', fontWeight: 300, color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginTop: '24px' }}>
+        Investigação detalhada das funções cognitivas e emocionais. Atenção, memória, linguagem, comportamento. Traz clareza sobre o que está acontecendo.
+      </div>
+
+      <div style={{ height: '1px', background: GOLD_FAINT, margin: '44px 0' }} />
+
+      <div style={{ fontFamily: SERIF, fontSize: '36px', fontWeight: 700, color: GOLD, lineHeight: 1.15, marginBottom: '28px' }}>
+        Para quem é indicada?
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        {[
+          'Esquecimentos ou confusão mental',
+          'Dificuldade de atenção ou foco',
+          'Mudanças de humor ou comportamento',
+          'Histórico de AVC ou traumatismo craniano',
+          'Suspeita de TDAH, TEA ou Alzheimer',
+        ].map((text, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', flexShrink: 0, background: GOLD_DIM, marginTop: '12px' }} />
+            <div style={{ fontSize: '26px', lineHeight: 1.55, color: 'rgba(255,255,255,0.85)' }}>{text}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ─── Card 5 — Como é feita ───────────────────────────────────────────────────
+function Card5ComoFeita() {
+  const steps = [
+    { num: '01', title: 'Anamnese', desc: 'Conversa inicial sobre histórico de vida, saúde e comportamento.' },
+    { num: '02', title: 'Aplicação de testes', desc: 'Testes cognitivos, emocionais e comportamentais com base científica.' },
+    { num: '03', title: 'Observação clínica', desc: 'Análise de como você reage às tarefas durante a avaliação.' },
+  ]
+  return (
+    <div style={{
+      flex: 1, display: 'flex', flexDirection: 'column',
+      justifyContent: 'center', padding: '48px 80px',
+      position: 'relative', zIndex: 1,
+    }}>
+      <div style={{ fontFamily: SERIF, fontSize: '44px', fontWeight: 700, color: GOLD, lineHeight: 1.15, marginBottom: '32px' }}>
+        Como é feita a avaliação?
+      </div>
+      <div>
+        {steps.map((step, i) => (
+          <div key={i}>
+            <div style={{ display: 'flex', gap: '36px', alignItems: 'flex-start', padding: '36px 0' }}>
+              <div style={{
+                width: '80px', height: '80px', borderRadius: '50%', flexShrink: 0,
+                border: `2px solid ${GOLD_BORDER}`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontFamily: SERIF, fontSize: '28px', fontWeight: 700, color: GOLD_DIM,
+              }}>
+                {step.num}
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontFamily: SERIF, fontSize: '36px', fontWeight: 700, color: GOLD, lineHeight: 1.1, marginBottom: '12px' }}>
+                  {step.title}
+                </div>
+                <div style={{ fontSize: '24px', lineHeight: 1.55, color: 'rgba(255,255,255,0.85)' }}>
+                  {step.desc}
+                </div>
+              </div>
+            </div>
+            {i < steps.length - 1 && (
+              <div style={{ height: '1px', background: GOLD_FAINT }} />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ─── Card 6 — O que será avaliado ────────────────────────────────────────────
+function Card6OQueAvaliado() {
+  const items = [
+    { bold: 'Atenção', text: 'focar e sustentar' },
+    { bold: 'Memória', text: 'reter e recordar' },
+    { bold: 'Linguagem', text: 'compreensão e expressão' },
+    { bold: 'Raciocínio Lógico', text: 'resolver problemas' },
+    { bold: 'Funções Executivas', text: 'planejar e organizar' },
+    { bold: 'Emoções', text: 'regulação, humor, relações' },
+  ]
+  return (
+    <div style={{
+      flex: 1, display: 'flex', flexDirection: 'column',
+      justifyContent: 'center', padding: '48px 80px',
+      position: 'relative', zIndex: 1,
+    }}>
+      <div style={{ fontFamily: SERIF, fontSize: '44px', fontWeight: 700, color: GOLD, lineHeight: 1.15, marginBottom: '16px' }}>
+        O que será avaliado?
+      </div>
+      <div style={{ fontSize: '22px', color: WHITE_FAINT, lineHeight: 1.5, marginBottom: '36px' }}>
+        Funções cognitivas e emocionais que impactam o dia a dia:
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+        {items.map((item, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', flexShrink: 0, background: GOLD_DIM, marginTop: '12px' }} />
+            <div style={{ fontSize: '26px', lineHeight: 1.5, color: 'rgba(255,255,255,0.85)' }}>
+              <strong style={{ color: GOLD, fontWeight: 600 }}>{item.bold}</strong>{' — '}{item.text}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ marginTop: '32px', fontSize: '22px', lineHeight: 1.6, color: 'rgba(252,236,191,0.75)', fontStyle: 'italic' }}>
+        Visão clara do funcionamento cognitivo e emocional, orientando intervenções terapêuticas.
+      </div>
+    </div>
+  )
+}
+
+// ─── Card 7 — Tempo + Devolutiva ─────────────────────────────────────────────
+function Card7Tempo() {
+  return (
+    <div style={{
+      flex: 1, display: 'flex', flexDirection: 'column',
+      justifyContent: 'center', padding: '48px 80px',
+      position: 'relative', zIndex: 1,
+    }}>
+      <div>
+        <div style={{ fontFamily: SERIF, fontSize: '44px', fontWeight: 700, color: GOLD, lineHeight: 1.15, marginBottom: '24px' }}>
+          Quanto tempo dura?
+        </div>
+        <div style={{ fontSize: '28px', lineHeight: 1.7, color: 'rgba(255,255,255,0.85)' }}>
+          <strong style={{ color: GOLD, fontWeight: 700 }}>7 a 10 sessões presenciais</strong> de 1 hora, realizadas semanalmente.
+        </div>
+      </div>
+
+      <div style={{ height: '1px', background: 'rgba(255,255,255,0.15)', margin: '52px 0' }} />
+
+      <div>
+        <div style={{ fontFamily: SERIF, fontSize: '36px', fontWeight: 700, color: GOLD, lineHeight: 1.15, marginBottom: '24px' }}>
+          Análise e devolutiva
+        </div>
+        <div style={{ fontSize: '28px', lineHeight: 1.7, color: 'rgba(255,255,255,0.85)' }}>
+          Os resultados são comparados com padrões de idade e escolaridade, e na última sessão você recebe{' '}
+          <strong style={{ color: GOLD, fontWeight: 700 }}>laudo</strong> com{' '}
+          <strong style={{ color: GOLD, fontWeight: 700 }}>sugestões de cuidados</strong> e encaminhamentos.
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Card 8 — Benefícios ─────────────────────────────────────────────────────
+function Card8Beneficios() {
+  const items = [
+    'Ajuda no diagnóstico de doenças neurológicas e psicológicas',
+    'Orienta tratamentos',
+    'Esclarece dúvidas sobre dificuldades cognitivas ou emocionais',
+    'Ajuda a entender mudanças no comportamento',
+    'Ajuda a explorar potencialidades e habilidades',
+  ]
+  return (
+    <div style={{
+      flex: 1, display: 'flex', flexDirection: 'column',
+      justifyContent: 'center', padding: '48px 80px',
+      position: 'relative', zIndex: 1,
+    }}>
+      <div style={{ fontFamily: SERIF, fontSize: '44px', fontWeight: 700, color: GOLD, lineHeight: 1.15, marginBottom: '48px' }}>
+        Benefícios da Avaliação Neuropsicológica
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+        {items.map((item, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
+            <div style={{ width: '10px', height: '10px', borderRadius: '50%', flexShrink: 0, background: GOLD_DIM, marginTop: '13px' }} />
+            <div style={{ fontSize: '28px', lineHeight: 1.55, color: 'rgba(255,255,255,0.85)' }}>{item}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ─── Card 9 — CTA ────────────────────────────────────────────────────────────
+function Card9CTA() {
+  return (
+    <div style={{
+      flex: 1, display: 'flex', flexDirection: 'column',
+      justifyContent: 'center', padding: '40px 80px',
+      position: 'relative', zIndex: 1,
+    }}>
+      <div style={{ fontFamily: SERIF, fontSize: '40px', fontWeight: 700, color: GOLD, lineHeight: 1.15, marginBottom: '20px' }}>
+        Cuidado individualizado para cada pessoa
+      </div>
+      <div style={{ fontSize: '24px', lineHeight: 1.65, color: WHITE_DIM, marginBottom: '32px' }}>
+        Na Clínica Luciano Noceti, prezamos pela saúde mental com respeito, empatia e ética, oferecendo cuidado individualizado para cada paciente.
+      </div>
+
+      <div style={{ height: '1px', background: 'rgba(255,255,255,0.15)', marginBottom: '32px' }} />
+
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '32px' }}>
+        <svg style={{ flexShrink: 0, marginTop: '6px' }} width="36" height="36" viewBox="0 0 24 24" fill="none" stroke={GOLD} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <div>
+          <div style={{ fontSize: '22px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: GOLD, marginBottom: '8px' }}>
+            Onde acontece
+          </div>
+          <div style={{ fontSize: '24px', color: WHITE_DIM, lineHeight: 1.55 }}>
+            Rua Felipe Schmidt, 515 — Edifício Pórtico<br />
+            2º andar, Sala 204 — Centro — Florianópolis/SC
+          </div>
+        </div>
+      </div>
+
+      <div style={{ height: '1px', background: 'rgba(255,255,255,0.15)', marginBottom: '32px' }} />
+
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ fontSize: '22px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: GOLD, marginBottom: '20px' }}>
+          Agende sua avaliação
+        </div>
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: '20px',
+          background: GOLD_FAINT, borderRadius: '60px',
+          border: `2px solid ${GOLD_BORDER}`,
+          padding: '18px 40px', alignSelf: 'flex-start',
+        }}>
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="rgba(37,211,102,0.85)">
+            <path d={WA_PATH} />
+          </svg>
+          <div style={{ fontSize: '38px', fontWeight: 700, color: 'rgba(252,236,191,0.95)', letterSpacing: '1px' }}>
+            {NEURO_PHONE}
+          </div>
+        </div>
+
+        <div style={{ marginTop: '28px' }}>
+          <div style={{ fontSize: '22px', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: GOLD, marginBottom: '20px' }}>
+            Visite nosso site
+          </div>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '20px',
+            background: GOLD_FAINT, borderRadius: '60px',
+            border: `2px solid ${GOLD_BORDER}`,
+            padding: '18px 40px', alignSelf: 'flex-start',
+          }}>
+            <span style={{ fontSize: '36px', lineHeight: 1 }}>🌐</span>
+            <div style={{ fontSize: '38px', fontWeight: 700, color: 'rgba(252,236,191,0.95)', letterSpacing: '1px' }}>
+              lucianonoceti.com.br
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ─── Placeholder ─────────────────────────────────────────────────────────────
 function Placeholder({ n }: { n: number }) {
   return (
@@ -159,6 +503,9 @@ export default function NeuroCarrosselExport({ params }: Props) {
 
   const id = parseInt(params.id, 10)
   if (isNaN(id) || id < 1 || id > 9) notFound()
+
+  const anna     = profissionais.find(p => p.fazNeuropsico && p.nome === 'Anna de Lima Estanislau')
+  const catarina = profissionais.find(p => p.fazNeuropsico && p.nome === 'Catarina Geoffroy')
 
   const fullLayout = id === 1 || id === 9
 
@@ -183,7 +530,16 @@ export default function NeuroCarrosselExport({ params }: Props) {
         }} />
 
         {fullLayout ? <HeaderCompleto /> : <HeaderMinimalista />}
-        {id === 1 ? <Card1Capa /> : <Placeholder n={id} />}
+        {id === 1 ? <Card1Capa />
+          : id === 2 ? <Card2Anna anna={anna} />
+          : id === 3 ? <Card3Catarina catarina={catarina} />
+          : id === 4 ? <Card4OQueE />
+          : id === 5 ? <Card5ComoFeita />
+          : id === 6 ? <Card6OQueAvaliado />
+          : id === 7 ? <Card7Tempo />
+          : id === 8 ? <Card8Beneficios />
+          : id === 9 ? <Card9CTA />
+          : <Placeholder n={id} />}
         {fullLayout && <FooterEscuro />}
 
       </div>
