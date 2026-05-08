@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "cards": "node scripts/generate-cards.mjs",
-    "cards:neuro": "node scripts/generate-neuro-cards.mjs"
+    "cards:neuro": "node scripts/generate-neuro-cards.mjs",
+    "cards:neuro-carrossel": "node scripts/generate-neuro-cards-carrossel.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.372.0",
