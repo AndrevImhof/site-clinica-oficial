@@ -308,7 +308,7 @@ export const profissionais: Prof[] = [
     publico: 'Atende Adolescentes a partir dos 16 anos, Adultos e Idosos. Atendimento On-line e Presencial. Opção de atendimento em inglês e espanhol.',
     demandas: 'Ansiedade, depressão, pânico, fobia, inibições, dependências, autolesão e ideação, síndromes, transtornos, entre outras faces da saúde mental. Questões de gênero e raça e situações de violência. Sofrimento psíquico derivado de demandas gerais referente ao comportamento, ao social, ao relacional e à aprendizagem e trabalho. Processos de luto e perda, sobrecarga e esgotamento, mudanças corporais, transições de vida, expressão de si, traumas e experiências afins que causam angústia generalizada e outras demandas que possam surgir a partir do vínculo terapêutico.',
     atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), Saudesc, CELOS, Elosaúde, ABEPOM, CASACARESC, Sim Saúde, GEAP, FUSEX, Petrobras, Saúde Caixa e Particular.',
-    foto: '/equipe/Kevin_psico.avif',
+    foto: '/equipe/Kevin_psico.jpeg',
   },
   {
     nome: 'Larissa Fontana',
