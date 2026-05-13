@@ -263,7 +263,7 @@ export const profissionais: Prof[] = [
     formacao: 'Graduação em Psicologia pela Universidade do Vale do Itajaí (UNIVALI). Curso de Formação em Psicopatologia e Psicofarmacologia.',
     publico: 'Atende adolescentes a partir dos 15 anos, Adulto, Idoso. Atendimento On-line e Presencial.',
     demandas: 'Atende demandas relacionadas à ansiedade, depressão, inseguranças, medos, sobrecarga emocional, estresse e burnout, dificuldades de sono, procrastinação, solidão, traumas, luto e perdas, automutilação e ideação suicida, imagem corporal, relação com a alimentação e com o corpo, sexualidade, identidade de gênero, vivências LGBTQIA+, preconceito, violência, conflitos familiares, relações amorosas e interpessoais, relações abusivas, separação e reorganização familiar, dificuldades emocionais, comportamentais, sociais e de aprendizagem na adolescência, bullying, transições de vida, mudanças pessoais e profissionais, envelhecimento e adaptação cultural.',
-    atendimento: 'Unimed e Particular.',
+    atendimento: 'Unimed, SC Saúde e Particular.',
     foto: '/equipe/isabella_psico.jpeg',
   },
   {
@@ -274,7 +274,7 @@ export const profissionais: Prof[] = [
     formacao: 'Formada pela Universidade do Vale do Itajaí (UNIVALI).',
     publico: 'Atende Crianças a partir dos 06 anos, Adolescentes, Adultos, Idosos. Atendimento Presencial e Online.',
     demandas: 'Angústia e transtornos ansiosos; sofrimento psíquico e impasses subjetivos; quadros depressivos e melancólicos; transtornos do humor; manifestações bipolares; fobias e inibições; efeitos psíquicos do trauma; dificuldades atencionais e impulsividade (TDAH); sintomas compulsivos e repetição; estresse crônico e sobrecarga psíquica; manifestações pós-traumáticas; inibição social e ansiedade relacional; luto e elaboração de perdas; relação com o corpo, imagem e alimentação; questões de sexualidade e identidade; crises de pânico; ideação suicida; TOC e sintomas obsessivos; oscilações de humor e instabilidade afetiva; insônia e demais transtornos do sono; pânico recorrente; impactos subjetivos da violência sexual e interpessoal; efeitos psíquicos do preconceito e da discriminação; uso abusivo de substâncias e dependências; quadros psicóticos e sofrimento grave (incluindo esquizofrenia e paranoia); conflitos em torno de gênero e identidade; transições do ciclo vital e aposentadoria; conflitos conjugais e amorosos (atendimento individual); acompanhamento de pais em processo de adoção; dificuldades comportamentais, relacionais, cognitivas e de aprendizagem na infância e adolescência; transtornos alimentares (anorexia, bulimia, compulsão e seletividade alimentar); sofrimento ligado à imagem corporal; reações ao trauma; organização borderline da personalidade; burnout e esgotamento psíquico; violências contra mulheres, crianças e adolescentes; sintomas psicossomáticos e corpo em sofrimento; separação, divórcio e reorganização familiar; alcoolismo e outras dependências.',
-    atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), Saudesc, CELOS, Elosaúde, ABEPOM, CASACARESC, Sim Saúde, GEAP, FUSEX, Petrobras, Saúde Caixa e Particular.',
+    atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), Saudesc, CELOS, Elosaúde, ABEPOM, CASACARESC, SC Saúde, Sim Saúde, GEAP, FUSEX, Petrobras, Saúde Caixa e Particular.',
     foto: '/equipe/júlia_psico.avif',
   },
   {
@@ -439,7 +439,7 @@ export const profissionais: Prof[] = [
     formacao: 'Graduação em psicologia (UFSC, 1995), Mestrado em psicologia (UFSC, 1998), Doutorado em epistemologia da psicologia (UFSCar, 2010).',
     publico: 'Atende Adulto a partir dos 18 anos, Idosos. Atendimento Presencial e On-line.',
     demandas: 'Estresse e ansiedade.',
-    atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), Saudesc, CELOS, Elosaúde, ABEPOM, CASACARESC, Sim Saúde, GEAP, FUSEX, Petrobras, Saúde Caixa e Particular.',
+    atendimento: 'Unimed, Cartão Acesso + Fácil (Unimed), Saudesc, CELOS, Elosaúde, ABEPOM, CASACARESC, SC Saúde, Sim Saúde, GEAP, FUSEX, Petrobras, Saúde Caixa e Particular.',
     foto: '/equipe/sergio_psico.avif',
   },
   {
