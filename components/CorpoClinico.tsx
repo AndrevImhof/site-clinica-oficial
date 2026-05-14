@@ -5,7 +5,13 @@ import Image from 'next/image'
 import { X, MessageCircle, ChevronRight, ChevronDown, Monitor, MapPin, Search } from 'lucide-react'
 import { type Prof, profissionais } from '@/lib/profissionais'
 
-const WA_LINK = 'https://wa.me/5548998056893'
+const WA_BASE = 'https://wa.me/5548998056893'
+function waLink(nome: string) {
+  const primeiroNome = nome.split(' ')[0]
+  const artigo = primeiroNome.toLowerCase().endsWith('a') ? 'a' : 'o'
+  const texto = `Olá, venho do site e tenho interesse em realizar um agendamento com ${artigo} profissional ${nome}. Poderia me auxiliar?`
+  return `${WA_BASE}?text=${encodeURIComponent(texto)}`
+}
 
 
 /* ─── Ordem fixa dos filtros ──────────────────────────────── */
@@ -113,7 +119,7 @@ function Modal({ p, onClose }: { p: Prof; onClose: () => void }) {
 
         {/* Botão de agendamento — fixo fora do scroll, sempre visível */}
         <div className="flex-shrink-0 px-5 py-4 border-t border-neutral-100 bg-white rounded-b-3xl">
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+          <a href={waLink(p.nome)} target="_blank" rel="noopener noreferrer"
             className="btn-whatsapp justify-center w-full">
             <MessageCircle className="w-4 h-4" />
             Agendar com {p.nome.split(' ')[0]}
