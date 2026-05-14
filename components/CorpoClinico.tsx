@@ -33,12 +33,19 @@ function Foto({ src, nome, className }: { src: string; nome: string; className: 
 
 /* ─── Modal ───────────────────────────────────────────────── */
 function Modal({ p, onClose }: { p: Prof; onClose: () => void }) {
+  const [fotoExpandida, setFotoExpandida] = useState(false)
+
   useEffect(() => {
-    const fn = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    const fn = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (fotoExpandida) setFotoExpandida(false)
+        else onClose()
+      }
+    }
     document.addEventListener('keydown', fn)
     document.body.style.overflow = 'hidden'
     return () => { document.removeEventListener('keydown', fn); document.body.style.overflow = '' }
-  }, [onClose])
+  }, [onClose, fotoExpandida])
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
@@ -60,10 +67,16 @@ function Modal({ p, onClose }: { p: Prof; onClose: () => void }) {
             aria-label="Fechar modal">
             <X className="w-4 h-4 text-neutral-500" />
           </button>
-          <div className="flex items-center gap-4 pr-8">
-            <Foto src={p.foto} nome={p.nome}
-              className="w-20 h-20 rounded-full border-4 border-white shadow-md flex-shrink-0" />
-            <div className="min-w-0">
+          <div className="flex flex-col items-center text-center gap-3">
+            <button
+              onClick={() => setFotoExpandida(true)}
+              className="rounded-full focus:outline-none focus:ring-2 focus:ring-[#7C2C3B]/40 hover:opacity-90 transition-opacity"
+              aria-label={`Ver foto de ${p.nome} em tamanho real`}
+            >
+              <Foto src={p.foto} nome={p.nome}
+                className="w-32 h-32 rounded-full border-4 border-white shadow-md" />
+            </button>
+            <div>
               <h3 className="font-serif font-bold text-[#7C2C3B] text-base leading-tight">{p.nome}</h3>
               <p className="text-[#7C2C3B] text-xs font-semibold mt-0.5 opacity-80">{p.registro}</p>
               <p className="text-neutral-600 text-xs mt-1 font-medium">{p.metodo}</p>
@@ -107,6 +120,33 @@ function Modal({ p, onClose }: { p: Prof; onClose: () => void }) {
           </a>
         </div>
       </div>
+
+      {/* Lightbox */}
+      {fotoExpandida && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90"
+          onClick={() => setFotoExpandida(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Foto de ${p.nome} em tamanho real`}
+        >
+          <button
+            onClick={() => setFotoExpandida(false)}
+            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30
+                       flex items-center justify-center transition-colors"
+            aria-label="Fechar foto"
+          >
+            <X className="w-5 h-5 text-white" />
+          </button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={p.foto}
+            alt={`Foto de ${p.nome}`}
+            className="w-[280px] h-[460px] object-cover rounded-2xl shadow-2xl"
+            onClick={e => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   )
 }
